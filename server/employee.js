@@ -30,18 +30,22 @@ router.post('/login',(request,response)=>{
     const {empemail,password}=request.body
     const connection=db.connect()
     const statement=`select * from Employee where empemail='${empemail}' and password='${password}'`
+    console.log(statement)
     connection.query(statement,(error,admins)=>{
         connection.end()
 
         if(admins.length==0){
-            response.send(utils.createResult('user does not exists'))
+            response.send(utils.createResult('user does not exists 111'))
         }
         else{
             const admin=admins[0]
             const info={
-                empemail:admin['empeamil']
+                empemail:admin['empeamil'],
+                empid:admin['empid'],
+                empusername:admin['empusername'],
+                categoryid:admin['categoryid']
             }
-            response.send(utils.createResult(error,admins))
+            response.send(utils.createResult(error,info))
         }
     })
 })
@@ -111,6 +115,17 @@ else{
 })
 
 router.put('/:empid', (request, response) => {
+    const {empid} = request.params
+    const {categoryid ,empfirstname,emplastname,empemail,empcontact,empusername,dateofjoining,dateofbirth,password,image,salary} = request.body
+    const connection = db.connect()
+    const statement = `update Employee set categoryid = '${categoryid}', empfirstname='${empfirstname}', emplastname='${emplastname}', empemail='${empemail}', empcontact='${empcontact}', empusername='${empusername}', dateofjoining='${dateofjoining}', dateofbirth='${dateofbirth}', password='${password}', image='${image}', salary='${salary}' where empid = ${empid}`
+    connection.query(statement, (error, data) => {
+        connection.end()
+        response.send(utils.createResult(error, data))
+    })
+})
+
+router.put('/:empemail', (request, response) => {
     const {empid} = request.params
     const {categoryid ,empfirstname,emplastname,empemail,empcontact,empusername,dateofjoining,dateofbirth,password,image,salary} = request.body
     const connection = db.connect()

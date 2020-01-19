@@ -72,6 +72,7 @@ router.post('/login',(request,response)=>{
     const {email,password}=request.body
     const connection=db.connect()
     const statement=`select * from User where email='${email}' and password='${password}'`
+    console.log(statement)
     connection.query(statement,(error,admins)=>{
         connection.end()
 
@@ -81,9 +82,11 @@ router.post('/login',(request,response)=>{
         else{
             const admin=admins[0]
             const info={
-                email:admin['eamil']
+                userid:admin['userid'],
+                username:admin['username'],
+                email:admin['email']
             }
-            response.send(utils.createResult(error,admins))
+            response.send(utils.createResult(error,info))
         }
     })
 })
