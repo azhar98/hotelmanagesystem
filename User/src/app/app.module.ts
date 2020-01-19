@@ -15,14 +15,21 @@ import { BookingService } from './user/Booking/book.service';
 import { BookingComponent } from './user/Booking/booking.component';
 import { PaymentComponent } from './user/payment/payment.component';
 import { PaymentService } from './user/payment/payment.service';
+import { PaymentcopyService } from './user/payment copy/paymentcopy.service';
+import { PaymentcopyComponent } from './user/payment copy/payment.componentcopy';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './user/reset-password/reset-password.component';
 
 const routes: Route[] =[
   {path: '',component:WebsiteComponent},
+  { path: 'user-forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password/:id', component: ResetPasswordComponent },
  {path: 'website-component', component:WebsiteComponent},
  {path: 'login-component', component:LoginComponent},
  {path: 'register-component', component:RegisterComponent},
  {path: 'book-component', component:BookingComponent},
- {path: 'payment-component', component:PaymentComponent}
+ {path: 'payment-component', component:PaymentComponent},
+ {path: 'paymentcopy-component', component:PaymentcopyComponent}
 ]
 
 @NgModule({
@@ -32,7 +39,10 @@ const routes: Route[] =[
     RegisterComponent,
     LoginComponent,
     BookingComponent,
-    PaymentComponent
+    PaymentComponent,
+    PaymentcopyComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +54,8 @@ const routes: Route[] =[
     WebsiteService,
     UserService,
     BookingService,
-    PaymentService
+    PaymentService,
+    PaymentcopyService
   ],
   bootstrap: [AppComponent]
 })

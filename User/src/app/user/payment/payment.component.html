@@ -2,15 +2,7 @@
 
 <div class="row">
 
-    <div class="col-md-4">
-        <div class="form-group">
-            <label for="">Email Id</label>
-            <input [(ngModel)]="email" type="email" class="form-control">
-          </div>
-      <div class="form-group">
-        <button (click)="onGetid()" class="btn btn-success">Get BookingId</button>
-      </div>
-    </div>
+
   
     <div class="col-md-4">
       <div class="register">
@@ -48,7 +40,8 @@
   
           <div class="form-group">
             <button (click)="onPay()" class="btn btn-success">Pay</button>
-            <a routerLink="/book-component" class="btn btn-danger pull-right">Cancel</a>
+            <a routerLink="/book-component" class="btn btn-danger pull-right">Cancel</a><br>
+            <a routerLink="/paymentcopy-component">get Bookid</a>
           </div>
         </div>
       </div>

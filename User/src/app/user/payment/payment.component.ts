@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as toastr from 'toastr';
 import {PaymentService} from '../payment/payment.service'
+import {BookingService} from '../Booking/book.service'
 
 @Component({
     selector: 'payment-component',
@@ -10,6 +11,8 @@ import {PaymentService} from '../payment/payment.service'
 })
 
 export class PaymentComponent{
+
+    book=[]
 
     bookid=0
     billingmode=''
@@ -20,7 +23,8 @@ export class PaymentComponent{
     email=''
 
     constructor(private router: Router,
-        private paymentService:PaymentService){}
+        private paymentService:PaymentService,
+        private bookingService:BookingService){}
 
         onPay(){
             this.paymentService
@@ -50,14 +54,20 @@ export class PaymentComponent{
         }
 
         onGetid(){
-            this.paymentService
-            .getBookingId(this.email)
-            .subscribe(response=>{
-                console.log(response)
-                if(response['status']=='success'){
-                    console.log(this.bookid)
-                }
-            })
+            this.bookingService
+        .getId()
+        .subscribe(response=>{
+            if(response['status']=='success'){
+                this.book=response['data']
+                this.bookid=this.book[0].bookid
+                toastr.success("ur bookid is"+ this.bookid)
+                
+                console.log(this.bookid)
+
+            }else{
+                console.log(response['error'])
+            }
+        })
         }
 
 }
