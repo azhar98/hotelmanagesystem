@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {RoomCategoryService} from '../availablerooms/roomcategory.service';
+import * as toastr from 'toastr';
 
 @Component({
     selector: 'roomcategory-component',
@@ -30,10 +31,11 @@ export class RoomCategoryComponent{
             .subscribe(response=>{
                 console.log(response)
                 if (response['status'] == 'success') {
-                    alert('category added')
-                    this.router.navigate(['/availablerooms-component'])
+                    this.loadRooms()
+                    toastr.success('category added')
+                    //this.router.navigate(['/availablerooms-component'])
                   } else {
-                    alert('room id exists, enter another id')
+                    toastr.error('room id exists, enter another id')
                   }
             })
     }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminService} from '../admin.service';
 import * as toastr from 'toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'login-component',
@@ -11,8 +11,13 @@ import { Router } from '@angular/router';
 export class LoginComponent{
   empemail = ''
   password = ''
+  empusername=''
+  categoryid=''
+  componentToLaunch = 'availablerooms-component'
 
-  constructor(private router: Router,private adminService: AdminService) { }
+  constructor(private router: Router,
+    private adminService: AdminService,
+    private activatedRoute: ActivatedRoute) { this.empusername=sessionStorage['empusername']}
 
   onLogin(){
     if(this.empemail.length == 0){
@@ -25,13 +30,18 @@ export class LoginComponent{
         .subscribe(response=>{
           console.log(response)
             if(response['status'] == 'success'){
+                sessionStorage['login_status'] = '1'
+                sessionStorage['empid']=response['data']['empid']
+                sessionStorage['empusername']=response['data']['empusername']
+                sessionStorage['categoryid']=response['data']['categoryid']
                 toastr.success('authenticated')
-                localStorage['login_status']='1'
-                localStorage['username']=response['data']['username']
-                localStorage['userid']=response['data']['id']
-                this.router.navigate(['/panel-component'])
+                
+                //localStorage['login_status']='1'
+                //localStorage['username']=response['data']['username']
+                //localStorage['userid']=response['data']['id']
+                this.router.navigate(['/availablerooms-component'])
             }else{
-                toastr.success(response['error'])
+                toastr.error(response['error'])
             }
         })
     }

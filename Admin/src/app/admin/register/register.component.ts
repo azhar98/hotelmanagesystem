@@ -57,6 +57,7 @@ export class RegisterComponent{
              .subscribe(response=>{
                  console.log(response)
                  if (response['status'] == 'success') {
+                     toastr.success('Successfully Registered')
                      this.router.navigate(['/admin-login'])
                    } else {
 

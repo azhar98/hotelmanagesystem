@@ -69,6 +69,7 @@ const routes: Route[] =[
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes)
+    //RouterModule.for(routes)
   ],
   providers: [
   AdminService,

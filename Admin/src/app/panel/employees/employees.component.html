@@ -30,14 +30,14 @@
             <td>{{employee.dateofjoining}}</td>
             <td>{{employee.dateofbirth}}</td>
             <td>{{employee.salary}}</td>
-            <td><img src="http://localhost:4000/{{employee.image}}" alt="employee" height="20" width="20"></td>
+            <td><img src="http://localhost:4000/{{employee.image}}" alt="employee" height="30" width="30"></td>
             <td>
                  <button (click)="onDelete(employee.empid)" class="btn btn-danger" >
                   <i class="glyphicon glyphicon-trash"></i>
                 </button>
-                 <button (click)="onUpdate(employee.empid)" class="btn btn-warning" >
+                 <!-- <button (click)="onUpdate(employee.empid)" class="btn btn-warning" >
                   <i class="glyphicon glyphicon-pencil"></i>
-                </button>
+                </button> -->
             </td>
         </tr>
     </tbody>

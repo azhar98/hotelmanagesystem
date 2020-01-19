@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label for="">Bedding Category</label>
                 <select [(ngModel)]="beddingtype" class="form-control">
-                  <option>Single</option>
+                  <option aria-selected="true">Single</option>
                   <option>Double</option>
                   <option>Triple</option>
                   <option>Quad</option>
@@ -28,6 +28,7 @@
               <button (click)="onAddRoom()" type="button" class="btn btn-success">
                 <i class="glyphicon glyphicon-ok"></i>
         </button>
+        <a routerLink="/availablerooms-component" class="btn btn-warning pull-left"> <i class="glyphicon glyphicon-arrow-left"></i></a>
     </div>
     </div>
     <div class="col-md-2"></div>
@@ -62,4 +63,3 @@
 
 </div>
 
-<a routerLink="/availablerooms-component" class="btn btn-warning pull-left">Back</a>

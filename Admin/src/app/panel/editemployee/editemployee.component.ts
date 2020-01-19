@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PanelService } from '../panel.service';
 import { Router } from '@angular/router';
 import {EmployeeService} from '../employees/employees.service';
+import * as toastr from 'toastr';
 
 
 @Component({
@@ -45,9 +46,10 @@ export class EditEmployeeComponent{
         .subscribe(response => {
           if (response['status'] == 'success') {
             //this.loadEmployees()
-            alert('employee updated successfully')
+            toastr.success('employee updated successfully')
           } else {
             console.log(response['error'])
+            toastr.error('error')
           }
         })
     }

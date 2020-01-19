@@ -17,6 +17,19 @@
         </div>
 
         <div class="form-group">
+          <div class="checkbox">
+              <label>
+                <input [(ngModel)]="rememberme" type="checkbox"> Remember me ?
+              </label>
+            </div>
+      </div>
+
+      <div class="form-group">
+        <a routerLink="/user-forgot-password">Forgot password</a>
+      </div>
+
+
+        <div class="form-group">
           <button (click)="onLogin()" class="btn btn-success">Login</button>
           <a class="btn btn-warning pull-right" routerLink="/admin-register">Register</a>
         </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PanelService } from '../panel.service';
 import { Router } from '@angular/router';
 import {EmployeeService} from '../employees/employees.service'
+import * as toastr from 'toastr';
 
 @Component({
     selector: 'employees-component',
@@ -50,6 +51,7 @@ export class EmployeeComponent{
             .deleteEmployee(empid)
             .subscribe(response => {
               if (response['status'] == 'success') {
+                toastr.success('Employee deleted')
                 this.loadEmployees()
               } else {
                 console.log(response['error'])

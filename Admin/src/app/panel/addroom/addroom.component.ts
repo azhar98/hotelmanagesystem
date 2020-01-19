@@ -3,6 +3,7 @@ import { PanelService } from '../panel.service';
 import { Router } from '@angular/router';
 import {RoomCategoryService} from '../availablerooms/roomcategory.service';
 import {BeddingService} from '../addroom/bedding.service';
+import * as toastr from 'toastr';
 
 @Component({
     selector: 'addroom-component',
@@ -48,13 +49,12 @@ export class AddroomComponent{
         onAddRoom(){
             this.beddingService
           .addRoom(this.beddingtype, this.categoryid )
-        //  .addRooms(this.roomcategory,this.beddingcategory)
              .subscribe(response=>{
                  console.log(response)
                  if (response['status'] == 'success') {
-                     //this.router.navigate(['/admin-login'])
                      this.addintoavailability()
-                     alert('room added');
+                     this.loadRooms()
+                     toastr.success('room added')
                    } else {
 
                    }
@@ -81,6 +81,7 @@ export class AddroomComponent{
               .deleteRoom(bedid)
               .subscribe(response => {
                 if (response['status'] == 'success') {
+                  toastr.success('room deleted')
                   this.loadRooms()
                 } else {
                   console.log(response['error'])
