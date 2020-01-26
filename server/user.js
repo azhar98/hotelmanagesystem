@@ -46,6 +46,17 @@ router.post('/bookingid', (request, response) => {
     })
 })
 
+router.get('/bookingids/:email', (request, response) => {
+    const {email} = request.params
+
+    const connection = db.connect()
+    const statement = `select bookid from User where email = '${email}'`
+    connection.query(statement, (error, data) => {
+        connection.end()
+        response.send(utils.createResult(error, data))
+    })
+})
+
 router.post('/userbook', (request, response) => {
     const {email,bookid} = request.body
 
@@ -70,6 +81,7 @@ router.post('/', (request, response) => {
 
 router.post('/login',(request,response)=>{
     const {email,password}=request.body
+    console.log(response.body)
     const connection=db.connect()
     const statement=`select * from User where email='${email}' and password='${password}'`
     console.log(statement)

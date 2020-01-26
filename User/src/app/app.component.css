@@ -1,0 +1,9 @@
+.message{
+    text-shadow: 5px 5px 5px #FFAD8F;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: red;
+    
+}

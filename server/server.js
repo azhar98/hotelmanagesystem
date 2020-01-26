@@ -10,6 +10,7 @@ const routerRoomcategory = require('./roomcategory')
 const routerRooms = require('./rooms')
 const routerUser = require('./user')
 const routerAvailability = require('./availability')
+const routerServices = require('./services')
 
 const app = express()
 
@@ -31,6 +32,7 @@ app.use('/roomcategory',routerRoomcategory)
 app.use('/rooms',routerRooms)
 app.use('/user',routerUser)
 app.use('/availability',routerAvailability)
+app.use('/services',routerServices)
 
 app.listen(4000, '0.0.0.0', () => {
     console.log('server started  on port 4000')

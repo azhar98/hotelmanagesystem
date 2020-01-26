@@ -21,6 +21,10 @@ export class EmployeeService {
     return this.http.get(this.url2)
   }
 
+  getProfile(empemail:String){
+    return this.http.get(this.url1 + '/join/' + empemail)
+  }
+
 //   updateEmployee(//categoryid:number,
 //     empid:string)
 //     // empfirstname:string,

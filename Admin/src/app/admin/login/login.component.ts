@@ -13,6 +13,8 @@ export class LoginComponent{
   password = ''
   empusername=''
   categoryid=''
+  empfirstname=''
+  emplastname=''
   componentToLaunch = 'availablerooms-component'
 
   constructor(private router: Router,
@@ -34,12 +36,15 @@ export class LoginComponent{
                 sessionStorage['empid']=response['data']['empid']
                 sessionStorage['empusername']=response['data']['empusername']
                 sessionStorage['categoryid']=response['data']['categoryid']
+                sessionStorage['empfirstname']=response['data']['empfirstname']
+                sessionStorage['emplastname']=response['data']['emplastname']
+                sessionStorage['empemail']=response['data']['empemail']
                 toastr.success('authenticated')
                 
                 //localStorage['login_status']='1'
                 //localStorage['username']=response['data']['username']
                 //localStorage['userid']=response['data']['id']
-                this.router.navigate(['/availablerooms-component'])
+                this.router.navigate(['/profile-component'])
             }else{
                 toastr.error(response['error'])
             }

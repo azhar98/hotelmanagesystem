@@ -17,6 +17,16 @@ router.get('/', (request, response) => {
 
 })
 
+router.get('/join/:empemail', (request, response) => {
+    const connection = db.connect()
+    const {empemail} = request.params
+    const statement = `select c.categories, e.empid, e.empfirstname, e.emplastname, e.empemail, e.empcontact, e.dateofjoining, e.dateofbirth, e.salary, e.image from EmpCategory c inner join Employee e on(c.categoryid=e.categoryid) where empemail='${empemail}' `
+    connection.query(statement, (error, data) => {
+        connection.end()
+        response.send(utils.createResult(error, data))
+    })
+})
+
 router.get('/join', (request, response) => {
     const connection = db.connect()
     const statement = `select c.categories, e.empid, e.empfirstname, e.emplastname, e.empemail, e.empcontact, e.dateofjoining, e.dateofbirth, e.salary, e.image from EmpCategory c inner join Employee e on(c.categoryid=e.categoryid)`
@@ -40,10 +50,12 @@ router.post('/login',(request,response)=>{
         else{
             const admin=admins[0]
             const info={
-                empemail:admin['empeamil'],
+                empemail:admin['empemail'],
                 empid:admin['empid'],
                 empusername:admin['empusername'],
-                categoryid:admin['categoryid']
+                categoryid:admin['categoryid'],
+                empfirstname:admin['empfirstname'],
+                emplastname:admin['emplastname']
             }
             response.send(utils.createResult(error,info))
         }

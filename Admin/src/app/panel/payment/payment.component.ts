@@ -13,6 +13,9 @@ export class PaymentComponent{
    
     Payment=[]
 
+    book=[]
+
+    email=''
     bookid=0
     bedid=0
     billingno=0
@@ -25,6 +28,7 @@ export class PaymentComponent{
         private paymentService:PaymentService){ this.loadPayment()}
         
         loadPayment(){
+            this.onGetid()
             this.paymentService
             .getPayment()
             .subscribe(response => {
@@ -36,6 +40,38 @@ export class PaymentComponent{
                   }
             })
             
+        }
+
+        onGetid(){
+            this.insertBookid()
+            this.paymentService
+        .getId()
+        .subscribe(response=>{
+            if(response['status']=='success'){
+                this.book=response['data']
+                this.bookid=this.book[0].bookid
+                console.log(this.bookid)
+
+            }else{
+                console.log(response['error'])
+            }
+        })
+        }
+
+        insertBookid()
+        {
+            this.paymentService
+            .insertBookid(this.bookid)
+            .subscribe(response=>{
+                if(response['status']=='success'){
+                    this.book=response['data']
+                    this.bookid=this.book[0].bookid
+                    console.log(this.bookid)
+    
+                }else{
+                    console.log(response['error'])
+                }
+            })
         }
 
         Back(){

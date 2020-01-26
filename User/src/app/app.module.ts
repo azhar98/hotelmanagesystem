@@ -19,6 +19,9 @@ import { PaymentcopyService } from './user/payment copy/paymentcopy.service';
 import { PaymentcopyComponent } from './user/payment copy/payment.componentcopy';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './user/reset-password/reset-password.component';
+import { AboutusComponent } from './website/aboutus/aboutus.component';
+import { GalleryComponent } from './user/gallery/gallery.component';
+import { ContactusComponent } from './user/contactus/contactus.component';
 
 const routes: Route[] =[
   {path: '',component:WebsiteComponent},
@@ -29,7 +32,10 @@ const routes: Route[] =[
  {path: 'register-component', component:RegisterComponent},
  {path: 'book-component', component:BookingComponent},
  {path: 'payment-component', component:PaymentComponent},
- {path: 'paymentcopy-component', component:PaymentcopyComponent}
+ {path: 'paymentcopy-component', component:PaymentcopyComponent},
+ {path: 'Aboutus-component', component:AboutusComponent},
+ {path: 'gallery-component', component:GalleryComponent},
+ {path: 'contact-component', component:ContactusComponent}
 ]
 
 @NgModule({
@@ -42,7 +48,10 @@ const routes: Route[] =[
     PaymentComponent,
     PaymentcopyComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AboutusComponent,
+    GalleryComponent,
+    ContactusComponent
   ],
   imports: [
     BrowserModule,

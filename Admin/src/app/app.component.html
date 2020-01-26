@@ -39,10 +39,12 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <!-- <li><a *ngIf="session !='1'" routerLink="/admin-login">Login</a></li> -->
+          
+          <li *ngIf="session =='1'&& sessionCategory == '1'"><a routerLink="/availablerooms-component">Available Rooms</a></li>
           <li *ngIf="session =='1' && sessionCategory == '1'"><a routerLink="/status-component">Status</a></li>
-          <li *ngIf="session =='1'"><a routerLink="/availablerooms-component">Available Rooms</a></li>
           <li *ngIf="session =='1' && sessionCategory == '1'"><a routerLink="/payment-component">Payment</a></li>
-          <li *ngIf="session =='1'"><a routerLink="/employee-component">Employees</a></li>
+          <li *ngIf="session =='1' && sessionCategory == '1'"><a routerLink="/employee-component">Employees</a></li>
+          <li *ngIf="session =='1'"><a routerLink="/profile-component">Profile</a></li>
         </ul>
         
         <ul class="nav navbar-nav navbar-right">

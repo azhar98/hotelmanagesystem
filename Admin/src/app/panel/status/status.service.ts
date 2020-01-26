@@ -4,11 +4,15 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class StatusService {
 
-  url = 'http://localhost:4000/bookingdetails'
-
+  url1 = 'http://localhost:4000/bookingdetails'
+  
   constructor(private http: HttpClient) { }
 
   getCategory() {
-    return this.http.get(this.url+'/join')
+    return this.http.get(this.url1+'/join')
+  }
+
+  UserBookid() {
+    return this.http.get(this.url1+'/join')
   }
 }

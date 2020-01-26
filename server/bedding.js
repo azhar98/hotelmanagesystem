@@ -22,6 +22,16 @@ router.get('/', (request, response) => {
     })
 })
 
+router.get('/beddingtype/:categoryid', (request, response) => {
+    const connection = db.connect()
+    const {categoryid} = request.params
+    const statement = `select beddingtype from Bedding where categoryid= ${categoryid}`
+    connection.query(statement, (error, data) => {
+        connection.end()
+        response.send(utils.createResult(error, data))
+    })
+})
+
 router.get('/join', (request, response) => {
     const connection = db.connect()
     const statement = `select b.bedid 'bedid', r.category 'category', b.beddingtype 'beddingtype' from RoomCategory r inner join Bedding b on r.categoryid=b.categoryid`

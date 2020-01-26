@@ -1,7 +1,7 @@
 /* Remove the navbar's default margin-bottom and rounded borders */ 
 .navbar {
   margin-bottom: 0;
-  border-radius: 0;
+  border-radius: 2;
 }
 
 /* Add a gray background color and some padding to the footer */
@@ -31,4 +31,26 @@ footer {
   padding: 25px;
   color: antiquewhite;
   text-shadow: 5px 5px 7px #BAFF85;
+  
+}
+
+.AboutUs{
+  background-origin: padding-box;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 5px;
+  /* background-color: antiquewhite; */
+  background-image: url('/assets/food/2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 30px;
+}
+
+p{
+  text-align: justify;
+  text-indent: 50px;
+  line-height: 1.8;
+  font-family: "Times New Roman", Times, serif;
+  font-style: oblique;
+  font-size: 20px;
 }

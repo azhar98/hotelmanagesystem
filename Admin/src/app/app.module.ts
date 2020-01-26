@@ -27,6 +27,7 @@ import { StatusService } from './panel/status/status.service';
 import { EmployeeService } from './panel/employees/employees.service';
 import { EditEmployeeComponent } from './panel/editemployee/editemployee.component';
 import { PaymentService } from './panel/payment/payment.service';
+import { ProfileComponent } from './panel/profile/profile.component';
 
 
 
@@ -44,7 +45,8 @@ const routes: Route[] =[
  {path: 'availablerooms-component', component:AvailableroomsComponent},
  {path: 'addroom-component', component:AddroomComponent},
  {path: 'roomcategory-component', component:RoomCategoryComponent},
- {path: 'editemployee-component', component:EditEmployeeComponent}
+ {path: 'editemployee-component', component:EditEmployeeComponent},
+ {path: 'profile-component', component:ProfileComponent}
 ]
 
 @NgModule({
@@ -62,7 +64,8 @@ const routes: Route[] =[
     AvailableroomsComponent,
     AddroomComponent,
     RoomCategoryComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

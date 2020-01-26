@@ -42,16 +42,16 @@ router.post('/', (request, response) => {
     })
 })
 
-// router.post('/book', (request, response) => {
-//     const {bedid,check_in_date,check_out_date} = request.body
-
-//     const connection = db.connect()
-//     const statement = `insert into BookingDetails (bedid,check_in_date,check_out_date) values ( '${bedid}', '${check_in_date}', '${check_out_date}')`
-//     connection.query(statement, (error, data) => {
-//         connection.end()
-//         response.send(utils.createResult(error, data))
-//     })
-// })
+router.post('/bookingid/:emailid', (request, response) => {
+    const {bookid} = request.body
+    const {emailid} = request.params
+    const connection = db.connect()
+    const statement = `insert into BookingDetails (bookid) values '${bookid}' where emailid = '${emailid}'`
+    connection.query(statement, (error, data) => {
+        connection.end()
+        response.send(utils.createResult(error, data))
+    })
+})
 
 router.post('/book11', (request, response) => {
     const {check_in_date,check_out_date, categoryid, beddingtype,
@@ -66,6 +66,8 @@ router.post('/book11', (request, response) => {
     })    
 })
 
+
+
 router.post('/book', (request, response) => {
     var {check_in_date,check_out_date, categoryid, beddingtype,bedid} = request.body
 
@@ -74,7 +76,6 @@ router.post('/book', (request, response) => {
     const statement1 = `select bedid from Bedding where categoryid = '${categoryid}' and beddingtype = '${beddingtype}'`
     bedid = (statement1)
     connection.query(statement1,(error, value)=>{
-        //console.log(value)
         console.log(value[0].bedid);
         bedid= value[0].bedid
         if(value.length!=0){
