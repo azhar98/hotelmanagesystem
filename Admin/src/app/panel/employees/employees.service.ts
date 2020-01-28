@@ -25,34 +25,41 @@ export class EmployeeService {
     return this.http.get(this.url1 + '/join/' + empemail)
   }
 
-//   updateEmployee(//categoryid:number,
-//     empid:string)
-//     // empfirstname:string,
-//     // emplastname:string,
-//     // empemail:string,
-//     // empcontact:number,
-//     // empusername:string,
-//     // //dateofjoining:Date,
-//     // //dateofbirth:Date,
-//     // //image:string,
-//     // password:string,
-//     // salary:number){
-//     // const body = {
-//     //   categoryid:categoryid,
-//     //   empid:empid,
-//     //   empfirstname:empfirstname,
-//     //   emplastname:emplastname,
-//     //   empemail:empemail,
-//     //   empcontact:empcontact,
-//     //   empusername:empusername,
-//     //   //dateofjoining:dateofjoining,
-//     //   //dateofbirth:dateofbirth,
-//     //   //image:image,
-//     //   password:password,
-//     //   salary:salary
+  updateEmployee(
+    empid:number,
+    empfirstname:string,
+    emplastname:string,
+    empemail:string,
+    empcontact:number,
+    empusername:string,
+    password:string,
+    salary:number,
+    image:string){
+    // const body = {
+    //   empid:empid,
+    //   empfirstname:empfirstname,
+    //   emplastname:emplastname,
+    //   empemail:empemail,
+    //   empcontact:empcontact,
+    //   empusername:empusername,
+    //   password:password,
+    //   salary:salary,
+    //   image:image
+    // }
 
-//   return this.http.put(this.url1 + '/register', body)
-// }
+    const body = new FormData()
+    body.append('empid','' + empid)
+    body.append('empfirstname', empfirstname)
+    body.append('emplastname', emplastname)
+    body.append('empemail', '' + empemail)
+    body.append('empcontact', '' + empcontact)
+    body.append('empusername', empusername)
+    body.append('password', password)
+    body.append('salary', '' + salary)
+    body.append('image', image)
+
+  return this.http.put(this.url1 + '/update/' + empid, body)
+}
 // updateEmployee(empid:number){
 //   return this.http.put(this.url1 + '/' +empid)
 // }

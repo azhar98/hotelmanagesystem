@@ -80,22 +80,7 @@ router.post('/register', upload.single('image'), (request, response) => {
         
     })
 }
-// router.post('/register', (request, response) => {
-//     const {categoryid,empfirstname,emplastname,empemail,empcontact,empusername,password,salary} = request.body
 
-//     const connection = db.connect()
-
-//     const statement1=`select * from Employee where empemail='${empemail}'`
-//     connection.query(statement1,(error, admins)=>{
-//         console.log(admins)
-//         if(admins.length==0){
-//             const statement = `insert into Employee (categoryid,empfirstname,emplastname,empemail,empcontact,empusername,password,salary) values (${categoryid},'${empfirstname}', '${emplastname}', '${empemail}', ${empcontact}, '${empusername}', '${password}', ${salary})`
-//             connection.query(statement, (error, data) => {
-//             connection.end()
-//             response.send(utils.createResult(error, data))
-        
-//     })
-// }
 else{
     connection.end()
     response.send(utils.createResult('email exists. please use another email'))
@@ -126,16 +111,33 @@ else{
     })
 })
 
-router.put('/:empid', (request, response) => {
+router.put('/update/:empid', upload.single('image'), (request, response) => {
     const {empid} = request.params
-    const {categoryid ,empfirstname,emplastname,empemail,empcontact,empusername,dateofjoining,dateofbirth,password,image,salary} = request.body
+    const {empfirstname,emplastname,empemail,empcontact,empusername,password,salary} = request.body
+    console.log(response.body)
+    var image = request.file.filename
+
     const connection = db.connect()
-    const statement = `update Employee set categoryid = '${categoryid}', empfirstname='${empfirstname}', emplastname='${emplastname}', empemail='${empemail}', empcontact='${empcontact}', empusername='${empusername}', dateofjoining='${dateofjoining}', dateofbirth='${dateofbirth}', password='${password}', image='${image}', salary='${salary}' where empid = ${empid}`
+    const statement = `update Employee set empfirstname='${empfirstname}', emplastname='${emplastname}', empemail='${empemail}', empcontact='${empcontact}', empusername='${empusername}', password='${password}', salary='${salary}', image='${image}' where empid = ${empid}`
     connection.query(statement, (error, data) => {
         connection.end()
         response.send(utils.createResult(error, data))
     })
 })
+
+// router.put('/update/:empid', (request, response) => {
+//     const {empid} = request.params
+//     const {empfirstname,emplastname,empemail,empcontact,empusername,password,salary} = request.body
+//     console.log(response.body)
+//     //var image = request.file.filename
+
+//     const connection = db.connect()
+//     const statement = `update Employee set empfirstname='${empfirstname}', emplastname='${emplastname}', empemail='${empemail}', empcontact='${empcontact}', empusername='${empusername}', password='${password}', salary='${salary}' where empid = ${empid}`
+//     connection.query(statement, (error, data) => {
+//         connection.end()
+//         response.send(utils.createResult(error, data))
+//     })
+// })
 
 router.put('/:empemail', (request, response) => {
     const {empid} = request.params

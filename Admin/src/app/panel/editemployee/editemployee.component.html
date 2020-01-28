@@ -1,4 +1,4 @@
-<h1>Edit Employee Information</h1>
+
 
 <div class="row">
 
@@ -8,19 +8,20 @@
           <div class="register">
             <div class="form">
               <h1>Register</h1>
-      
-              <div class="form-group">
+             
+              <!-- <div class="form-group">
+                
                 <label for="">Category</label>
                 <select [(ngModel)]="categoryid" class="form-control">
                   <option
                     *ngFor="let categoryid of category"
                     [value]="categoryid.categoryid">{{categoryid.categories}}</option>
                 </select>
-              </div>
+              </div> -->
       
               <div class="form-group">
                 <label for="">First Name</label>
-                <input [(ngModel)]="empfirstname" type="name" class="form-control">
+                <input  [(ngModel)]="empfirstname" type="name" class="form-control" >
               </div>
       
               <div class="form-group">
@@ -43,16 +44,6 @@
                 <input [(ngModel)]="empusername" type="username" class="form-control">
               </div>
       
-              <!-- <div class="form-group">
-                <label for="">Date of Birth</label>
-                <input [(ngModel)]="dateofbirth" type="date" class="form-control">
-              </div>
-      
-              <div class="form-group">
-                <label for="">Date of Joining</label>
-                <input [(ngModel)]="dateofjoining" type="date" class="form-control">
-              </div> -->
-      
               <div class="form-group">
                 <label for="">Salary</label>
                 <input [(ngModel)]="salary" type="number" class="form-control">
@@ -63,16 +54,20 @@
                 <input [(ngModel)]="password" type="password" class="form-control">
               </div>
       
-              
+              <div class="form-group">
+                  <label for="">Select Image</label>
+                  <input (change)="onSelectFile($event)" type="file" class="form-control">
+              </div>
              
       
               <div class="form-group">
                 <button (click)="onUpdate()" class="btn btn-success">Update</button>
-                <a routerLink="/employee-component" class="btn btn-danger pull-right">Cancel</a>
+                <a routerLink="/profile-component" class="btn btn-danger pull-right">Cancel</a>
               </div>
             </div>
           </div>
         </div>
+        
       
         <div class="col-md-4"></div>
       
