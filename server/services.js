@@ -26,6 +26,18 @@ router.get('/', (request, response) => {
 
 })
 
+router.get('/:role', (request, response) => {
+    const {role} = request.params
+    const connection = db.connect()
+    const statement = `select message, role from services where role = '${role}'`
+    connection.query(statement, (error, data) => {
+        connection.end()
+        
+        response.send(utils.createResult(error, data))
+    })
+
+})
+
 router.delete('/:id', (request, response) => {
     const {id} = request.params
     const connection = db.connect()
@@ -36,5 +48,8 @@ router.delete('/:id', (request, response) => {
         response.send(utils.createResult(error, data))
     })
 })
+
+
+
 
 module.exports=router

@@ -84,7 +84,7 @@ router.post('/login',(request,response)=>{
     console.log(response.body)
     const connection=db.connect()
     const statement=`select * from User where email='${email}' and password='${password}'`
-    console.log(statement)
+    //console.log(statement)
     connection.query(statement,(error,admins)=>{
         connection.end()
 
