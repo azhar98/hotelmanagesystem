@@ -5,8 +5,8 @@ function connect()
     const connection = mysql.createConnection
     ({
         host: 'localhost',
-        user: 'project',
-        password: 'project',
+        user: 'root',
+        password: '',
         database: 'hotel_management',
         port: 3306
     })
